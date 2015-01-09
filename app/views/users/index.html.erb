@@ -1,9 +1,9 @@
-Welcome,
+Welcome, <%= current_user.user_name %><br>
 
-<%= current_user.user_name %><br>
-<%= "Following:" %><br>
-<% current_user.friends.each do |friend| %>
-<%= friend.user_name %>
+<ul>
+<% @users.each do |user| %>
+  <li>
+    <%= link_to user.user_name, user_path(user) %>
+  </li>
 <% end %>
-
-<%= link_to "Jokes", jokes_path %>
+</ul>

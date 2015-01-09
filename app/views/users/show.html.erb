@@ -1,7 +1,10 @@
-Welcome,
+<h1><%= @user.user_name %></h1>
 
-<%= current_user.user_name %><br>
 <%= "Following:" %><br>
 <% current_user.friends.each do |friend| %>
 <%= friend.user_name %>
+<% end %>
+
+<%= form_for [@user, @user.friendships.build] do |f| %>
+  <%= f.submit %>
 <% end %>
