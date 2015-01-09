@@ -1,1 +1,4 @@
 <%= @joke.body %>
+<%= link_to "Edit Joke", edit_joke_path(@joke) %>
+<%= link_to "Delete Joke", joke_path( @joke.id ), method: :delete %>
+<%= link_to "Jokes", jokes_path %>

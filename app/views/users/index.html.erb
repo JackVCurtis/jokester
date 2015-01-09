@@ -5,3 +5,5 @@ Welcome,
 <% current_user.friends.each do |friend| %>
 <%= friend.user_name %>
 <% end %>
+
+<%= link_to "Jokes", jokes_path %>

@@ -13,8 +13,6 @@ class JokesController < ApplicationController
 
 	def create
 		@joke = current_user.jokes.build(joke_params)
-		#@joke = Joke.new(joke_params, :user_id)
-
 		if @joke.save
 			redirect_to @joke
 		else
@@ -23,15 +21,21 @@ class JokesController < ApplicationController
 	end
 
 	def update
-		@joke = Joke.update(joke_params)
+		@joke = current_user.jokes.find(params[:id])
+		if @joke.update(joke_params)
+			redirect_to @joke
+		end
+		#@joke = Joke.update(joke_params)
 	end
 
 	def edit
-		@joke = Joke.find(params[:joke_id, :user_id])
+		@joke = Joke.find(params[:id])
 	end
 
 	def destroy
-		@joke = Joke.destroy
+		@joke = Joke.find(params[:id])
+			@joke.destroy
+			redirect_to jokes_path
 	end
 
 
